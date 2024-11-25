@@ -178,9 +178,7 @@ void ClonaPalabras(
 
             newPal = revertir(posicion, szPalabraLeidaCopia, szPalabrasSugeridas, newPal, longitud);
 
-						/*szPalabraLeidaCopia[i] = letras2[j]; //Sustituye cada letra con las especiales
-
-						newPal = revertir(posicion, szPalabraLeidaCopia, szPalabrasSugeridas, newPal, longitud);*/
+						
         }
     }
 
