@@ -133,7 +133,5 @@ void ListaCandidatas(
 	int &	iNumSugeridas)						//Numero de elementos en la lista
 ******************************************************************************************************************/
 // Función ClonaPalabras
-void ClonaPalabras(char* szPalabraLeida, char szPalabrasSugeridas[][TAMTOKEN], int& iNumSugeridas) {
-	iNumSugeridas = 0;
-	
-}
+
+//:(
