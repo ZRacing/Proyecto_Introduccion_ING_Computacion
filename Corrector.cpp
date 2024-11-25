@@ -125,13 +125,6 @@ void ListaCandidatas(
 		}
 	}
 }
-
-/*****************************************************************************************************************
-	ClonaPalabras: toma una palabra y obtiene todas las combinaciones y permutaciones requeridas por el metodo
-	char *	szPalabraLeida,						// Palabra a clonar
-	char	szPalabrasSugeridas[][TAMTOKEN], 	//Lista de palabras clonadas
-	int &	iNumSugeridas)						//Numero de elementos en la lista
-******************************************************************************************************************/
 //Da inicio a una función revertir
 int revertir(int posicion, char szPalabraLeidaCopia2[TAMTOKEN], char szPalabrasSugeridas[][TAMTOKEN], int newPal, int longitud);
 int revertir(int posicion, char szPalabraLeidaCopia2[TAMTOKEN], char szPalabrasSugeridas[][TAMTOKEN], int newPal, int longitud)
