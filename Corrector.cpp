@@ -4,6 +4,8 @@
 
 	Computadoras y programacion.
 	(c) Ponga su nombre y numero de cuenta aqui.
+ Oscar Gabriel Hernández Luna 
+ 322328071
 
 	Quiso decir: Programa principal de la aplicacion de la distancia de Levenstein.
 
