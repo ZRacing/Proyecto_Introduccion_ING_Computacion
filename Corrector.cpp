@@ -132,6 +132,86 @@ void ListaCandidatas(
 	char	szPalabrasSugeridas[][TAMTOKEN], 	//Lista de palabras clonadas
 	int &	iNumSugeridas)						//Numero de elementos en la lista
 ******************************************************************************************************************/
-// Función ClonaPalabras
+//Da inicio a una función revertir
+int revertir(int posicion, char szPalabraLeidaCopia2[TAMTOKEN], char szPalabrasSugeridas[][TAMTOKEN], int newPal, int longitud);
+int revertir(int posicion, char szPalabraLeidaCopia2[TAMTOKEN], char szPalabrasSugeridas[][TAMTOKEN], int newPal, int longitud)
+{
+    strcpy_s(szPalabrasSugeridas[newPal], szPalabraLeidaCopia2);
+    return newPal + 1;
+}
+// Función clonapalabra
+void ClonaPalabras(
+    char *szPalabraLeida,                     // Palabra a clonar
+    char szPalabrasSugeridas[][TAMTOKEN],    // Lista de palabras clonadas
+    int &iNumSugeridas)                      // Número de elementos en la lista
+{
+    int longitud, posicion = 0;
+    int i, conta, newPal = 0, apuntador;
+    char letras[] = {"abcdefghijklmnopqrstuvwxyzáéíóú"};  // Abecedario
+    //char letras2[] = {"áéíóú"};            // Caracteres especiales
+    char szPalabraLeidaCopia[TAMTOKEN], auxilPalab[TAMTOKEN], auxilPalab2[TAMTOKEN];
 
-//:(
+    longitud = strlen(szPalabraLeida);
+
+
+    for (i = 0; i < longitud; i++) {
+        apuntador = 0;
+        memset(auxilPalab, 0, TAMTOKEN);
+
+        for (conta = 0; conta < longitud; conta++) {
+            if (i != conta) {  // Pone las letras menos la eliminada
+                auxilPalab[apuntador++] = szPalabraLeida[conta];
+            }
+        }
+        newPal = revertir(posicion, auxilPalab, szPalabrasSugeridas, newPal, longitud - 1);
+    }
+
+
+    for (i = 0; i < longitud - 1; i++) {
+        strcpy_s(szPalabraLeidaCopia, szPalabraLeida);
+        char temp = szPalabraLeidaCopia[i];
+        szPalabraLeidaCopia[i] = szPalabraLeidaCopia[i + 1];
+        szPalabraLeidaCopia[i + 1] = temp;
+
+        newPal = revertir(posicion, szPalabraLeidaCopia, szPalabrasSugeridas, newPal, longitud);
+    }
+
+
+    for (i = 0; i < longitud; i++) {
+        strcpy_s(szPalabraLeidaCopia, szPalabraLeida);
+
+        for (conta = 0; conta < strlen(letras); conta++) {
+            szPalabraLeidaCopia[i] = letras[conta];  // Sustituye cada letra en la posición actual
+
+            newPal = revertir(posicion, szPalabraLeidaCopia, szPalabrasSugeridas, newPal, longitud);
+
+						/*szPalabraLeidaCopia[i] = letras2[j]; //Sustituye cada letra con las especiales
+
+						newPal = revertir(posicion, szPalabraLeidaCopia, szPalabrasSugeridas, newPal, longitud);*/
+        }
+    }
+
+
+    for (i = 0; i <= longitud; i++) {
+        for (conta = 0; conta < strlen(letras); conta++) {
+            memset(auxilPalab, 0, TAMTOKEN);
+            memset(auxilPalab2, 0, TAMTOKEN);
+
+            // Copia las letras antes de la posición de inserción
+            strcpy_s(auxilPalab, szPalabraLeida, i);
+
+            // Inserta el carácter del alfabeto
+            auxilPalab[i] = letras[conta];
+
+            // Copia las letras después de la posición de inserción
+            strcpy_s(auxilPalab2, &szPalabraLeida[i]);
+
+            strcat_s(auxilPalab, auxilPalab2);  // Combina las dos partes
+            newPal = revertir(posicion, auxilPalab, szPalabrasSugeridas, newPal, longitud + 1);
+        }
+    }
+
+    iNumSugeridas = newPal;
+}
+
+
