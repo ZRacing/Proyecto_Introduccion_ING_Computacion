@@ -1,2 +1,2 @@
 322328071
-El programa al principio se me hizo muy facil de hacer, pero entre más intentaba comprender el resultado del programa, me dí cuenta de que sería más complejo de lo que me imaginé, hubo varias opciones que intenté realizar en el programa pero estuvo bastante díficil, al principio se veía super simple pero es díficil entender cada cosa que tiene que hacer para que el resultado sea el esperado.
+Honestamente este proyecto fue bastante más difícil de lo que me imaginé, fue díficil comprender la lógica de lo que se necesitaba la verdad. 
