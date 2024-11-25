@@ -32,6 +32,43 @@ void Diccionario(char* szNombre, char szPalabras[][TAMTOKEN], int iEstadisticas[
 	if (err != 0 || fp == nullptr) {
 		return;
 	}
+	
+// Lee archivo línea a línea con el buffer
+	while (fgets(buffer, sizeof(buffer), fp) != nullptr) {
+		char* start = buffer;
+		while (*start != '\0') {
+
+			while (*start == ' ' || *start == '\n' || *start == '\r')
+				start++;
+
+			if (*start == '\0') // Cuando es fin de linea
+				break;
+
+			// Condiciones para encontrar fin
+			char* end = start;
+			while (*end != ' ' && *end != '\n' && *end != '\r' && *end != '\0')
+				end++;
+
+
+			size_t length = end - start;
+			if (length > 0 && length < TAMTOKEN) {
+				if (iNumElementos >= TAMTOKEN)
+					break;
+
+				//Copiar
+				strcpy_s(szPalabras[iNumElementos], TAMTOKEN, start, length);
+				szPalabras[iNumElementos][length] = '\0';
+
+				//Se pone en 1 la cantidad de veces que aparece
+				iEstadisticas[iNumElementos] = 1;
+				iNumElementos++;
+			}
+			start = end;
+		}
+	}
+
+	// Cerrar el archivo
+	fclose(fp);
 
 }
 
